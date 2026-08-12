@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="index.md" />
+  </Folder>
+  <Project Path="csharp.fundamental/csharp.fundamental.csproj" />
+</Solution>
