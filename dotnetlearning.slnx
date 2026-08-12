@@ -1,5 +1,8 @@
 <Solution>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/Dotnet FS Roadmap/">
+    <File Path="roadmap.md" />
+  </Folder>
+  <Folder Name="/Progress/">
     <File Path="index.md" />
   </Folder>
   <Project Path="csharp.fundamental/csharp.fundamental.csproj" />
