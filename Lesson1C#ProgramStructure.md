@@ -1,0 +1,805 @@
+# Lesson 1 — C# Program Structure & Fundamentals
+
+> **Module:** 1 — C# Programming Basics & Core Logic
+> **Topic:** 1.1 C# Syntax & Fundamentals
+> **Level:** Beginner
+> **Prerequisite:** None
+
+---
+
+## 1. Learning Objective
+
+By the end of this lesson, you should understand:
+
+* What C# is
+* What .NET is
+* How a C# program executes
+* What `Program.cs` is
+* What `Main()` means
+* What `Console.WriteLine()` does
+* Difference between `Write()` and `WriteLine()`
+* What comments are
+* What statements are
+* Why `;` is used
+* What `{ }` represent
+* Modern C# top-level statements vs traditional program structure
+
+---
+
+# 2. What is C#?
+
+**C# (C-Sharp)** is a programming language developed by Microsoft.
+
+It is commonly used with the **.NET platform** to build different types of applications.
+
+Examples:
+
+* Console applications
+* Web applications
+* Web APIs
+* Backend systems
+* Desktop applications
+* Cloud applications
+* Microservices
+* Enterprise applications
+* AI-integrated applications
+
+### Simple Understanding
+
+```text
+C# = Programming Language
+.NET = Development Platform
+```
+
+For example:
+
+```text
+C# Code
+   ↓
+.NET Platform
+   ↓
+Application
+```
+
+---
+
+# 3. What is .NET?
+
+.NET is a development platform provided by Microsoft.
+
+It provides:
+
+* Runtime
+* Libraries
+* SDK
+* Development tools
+* APIs
+
+C# programs use the .NET ecosystem to build and execute applications.
+
+### Basic Execution Flow
+
+```text
+C# Source Code
+      ↓
+   Compiler
+      ↓
+.NET Runtime
+      ↓
+ Application
+      ↓
+   Output
+```
+
+### Remember
+
+```text
+C# → Language
+.NET → Platform
+```
+
+---
+
+# 4. What is `Program.cs`?
+
+When you create a C# Console Application, you normally get a file named:
+
+```text
+Program.cs
+```
+
+It contains the starting code of the application.
+
+For a modern .NET console application, you may see:
+
+```csharp
+Console.WriteLine("Hello, World!");
+```
+
+`Program.cs` is not a special keyword. It is simply the conventional/default file name used for the application's initial program code.
+
+---
+
+# 5. What is the Entry Point?
+
+The **entry point** is the location from where application execution begins.
+
+In traditional C# applications, the entry point is the:
+
+```csharp
+Main()
+```
+
+method.
+
+Example:
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
+The execution starts from `Main()`.
+
+### Flow
+
+```text
+Application Starts
+       ↓
+     Main()
+       ↓
+Execute Statements
+       ↓
+Application Ends
+```
+
+---
+
+# 6. Understanding `Main()`
+
+Traditional syntax:
+
+```csharp
+static void Main()
+{
+    Console.WriteLine("Hello World");
+}
+```
+
+Break it down:
+
+```text
+static → method can be called without creating an object
+void   → method does not return a value
+Main   → entry-point method
+()     → parameter list
+{}     → method body
+```
+
+For now, remember:
+
+> `Main()` is the traditional entry point of a C# application.
+
+`static`, `void`, methods, parameters, and return types will be studied in more depth later.
+
+---
+
+# 7. Traditional C# Program Structure
+
+A traditional program can look like this:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
+### Structure
+
+```text
+using System;
+      ↓
+class Program
+      ↓
+Main()
+      ↓
+Program Statements
+```
+
+---
+
+# 8. Modern C# — Top-Level Statements
+
+Modern C# allows you to write:
+
+```csharp
+Console.WriteLine("Hello World");
+```
+
+without explicitly writing:
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
+This is called **top-level statements**.
+
+The compiler handles the required program structure behind the scenes.
+
+### Modern
+
+```csharp
+Console.WriteLine("Hello World");
+```
+
+### Traditional
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
+Both can be used, but modern .NET templates commonly use top-level statements.
+
+---
+
+# 9. `Console.WriteLine()`
+
+`Console.WriteLine()` is used to display output in the console.
+
+Example:
+
+```csharp
+Console.WriteLine("Hello World");
+```
+
+Output:
+
+```text
+Hello World
+```
+
+Another example:
+
+```csharp
+Console.WriteLine("Welcome to C#");
+Console.WriteLine("I am learning .NET");
+```
+
+Output:
+
+```text
+Welcome to C#
+I am learning .NET
+```
+
+Each `WriteLine()` moves the cursor to a new line after printing.
+
+---
+
+# 10. `Console.Write()`
+
+`Console.Write()` also prints output, but it does **not automatically move to the next line**.
+
+Example:
+
+```csharp
+Console.Write("Hello ");
+Console.Write("World");
+```
+
+Output:
+
+```text
+Hello World
+```
+
+---
+
+# 11. `Write()` vs `WriteLine()`
+
+| Method                | Behavior                          |
+| --------------------- | --------------------------------- |
+| `Console.Write()`     | Prints and stays on the same line |
+| `Console.WriteLine()` | Prints and moves to the next line |
+
+Example:
+
+```csharp
+Console.Write("A");
+Console.Write("B");
+```
+
+Output:
+
+```text
+AB
+```
+
+Example:
+
+```csharp
+Console.WriteLine("A");
+Console.WriteLine("B");
+```
+
+Output:
+
+```text
+A
+B
+```
+
+---
+
+# 12. What is a Statement?
+
+A **statement** is an instruction that tells the program to perform an operation.
+
+Example:
+
+```csharp
+Console.WriteLine("Hello");
+```
+
+This is a statement.
+
+Another example:
+
+```csharp
+int age = 21;
+```
+
+This is also a statement.
+
+C# programs are made up of statements that execute according to the program's flow.
+
+---
+
+# 13. Semicolon `;`
+
+A semicolon generally marks the end of a C# statement.
+
+Example:
+
+```csharp
+Console.WriteLine("Hello");
+```
+
+The `;` indicates the end of the statement.
+
+Another example:
+
+```csharp
+int age = 21;
+string name = "Hariom";
+```
+
+Each statement ends with `;`.
+
+### Remember
+
+```text
+Statement → ;
+```
+
+If required syntax is incomplete, the compiler can report an error.
+
+---
+
+# 14. Curly Braces `{ }`
+
+Curly braces define a **code block**.
+
+Example:
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello");
+    }
+}
+```
+
+Here:
+
+```text
+class Program
+{
+    // class block
+}
+```
+
+and:
+
+```text
+Main()
+{
+    // method block
+}
+```
+
+Curly braces will become extremely important when learning:
+
+* Methods
+* `if`
+* `else`
+* `switch`
+* Loops
+* Classes
+* Interfaces
+* Exception handling
+
+---
+
+# 15. Comments
+
+Comments are text written inside source code for developers.
+
+They are not executed as normal program instructions.
+
+## Single-Line Comment
+
+```csharp
+// This is a comment
+
+Console.WriteLine("Hello");
+```
+
+Everything after `//` on that line is treated as a comment.
+
+---
+
+## Multi-Line Comment
+
+```csharp
+/*
+   This is a
+   multi-line comment.
+*/
+
+Console.WriteLine("Hello");
+```
+
+---
+
+# 16. Why Use Comments?
+
+Comments can help:
+
+* Explain complicated logic
+* Document code
+* Temporarily disable code
+* Help another developer understand the program
+
+Example:
+
+```csharp
+// Display the welcome message
+Console.WriteLine("Welcome");
+```
+
+Avoid writing unnecessary comments such as:
+
+```csharp
+// Print Hello
+Console.WriteLine("Hello");
+```
+
+when the code is already obvious.
+
+---
+
+# 17. Complete Example
+
+```csharp
+Console.WriteLine("================================");
+Console.WriteLine("       C# Learning Journey");
+Console.WriteLine("================================");
+
+Console.WriteLine("Name: Hariom");
+Console.WriteLine("Course: B.Tech CSE");
+Console.WriteLine("Learning: C# and .NET");
+
+Console.WriteLine();
+
+Console.WriteLine("My first C# program!");
+```
+
+### Output
+
+```text
+================================
+       C# Learning Journey
+================================
+Name: Hariom
+Course: B.Tech CSE
+Learning: C# and .NET
+
+My first C# program!
+```
+
+---
+
+# 18. Important Concepts to Remember
+
+```text
+C#
+ ↓
+Programming Language
+
+.NET
+ ↓
+Development Platform
+
+Program.cs
+ ↓
+Common/default source file
+
+Main()
+ ↓
+Traditional application entry point
+
+Console.WriteLine()
+ ↓
+Print output + new line
+
+Console.Write()
+ ↓
+Print output without automatically creating a new line
+
+;
+ ↓
+Statement terminator
+
+{ }
+ ↓
+Code block
+
+// 
+ ↓
+Single-line comment
+
+/* */
+ ↓
+Multi-line comment
+```
+
+---
+
+# 19. Common Beginner Mistakes
+
+### Mistake 1 — Missing semicolon
+
+Incorrect:
+
+```csharp
+Console.WriteLine("Hello")
+```
+
+Correct:
+
+```csharp
+Console.WriteLine("Hello");
+```
+
+---
+
+### Mistake 2 — Wrong capitalization
+
+C# is case-sensitive.
+
+These are different:
+
+```csharp
+Console
+console
+CONSOLE
+```
+
+The correct class is:
+
+```csharp
+Console
+```
+
+---
+
+### Mistake 3 — Incorrect string quotes
+
+Correct:
+
+```csharp
+Console.WriteLine("Hello");
+```
+
+Incorrect:
+
+```csharp
+Console.WriteLine(Hello);
+```
+
+At this stage, text values are written inside double quotes.
+
+---
+
+### Mistake 4 — Incorrect braces
+
+Make sure code blocks are properly opened and closed:
+
+```csharp
+{
+    // code
+}
+```
+
+---
+
+# 20. Interview Questions
+
+### Q1. What is C#?
+
+C# is a programming language developed by Microsoft and commonly used with the .NET platform.
+
+### Q2. What is .NET?
+
+.NET is Microsoft's development platform that provides runtime, libraries, SDK, and tools for building applications.
+
+### Q3. What is `Program.cs`?
+
+`Program.cs` is the conventional/default source file containing the initial program code in a C# application.
+
+### Q4. What is `Main()`?
+
+In the traditional C# application structure, `Main()` is the entry point from which program execution starts.
+
+### Q5. What is the difference between `Write()` and `WriteLine()`?
+
+`Write()` prints without automatically moving to a new line, while `WriteLine()` prints and then moves to the next line.
+
+### Q6. Why is `;` used in C#?
+
+It generally marks the end of a statement.
+
+### Q7. What are comments?
+
+Comments are developer-written notes in source code that are not executed as normal program instructions.
+
+### Q8. What are top-level statements?
+
+Top-level statements allow C# code to be written without explicitly declaring the traditional `Program` class and `Main()` method.
+
+---
+
+# 21. Practice
+
+## Practice 1
+
+Create a console program that prints:
+
+```text
+========================
+    Student Profile
+========================
+Name: Your Name
+Age: Your Age
+Course: B.Tech CSE
+Language: C#
+```
+
+---
+
+## Practice 2
+
+Use `Write()` to produce:
+
+```text
+Hello World
+```
+
+without using a single `WriteLine()` for those words.
+
+---
+
+## Practice 3
+
+Add comments to your program:
+
+* One single-line comment
+* One multi-line comment
+
+---
+
+## Practice 4
+
+Write a program that prints:
+
+```text
+C# Basics
+.NET
+ASP.NET Core
+SQL Server
+React
+```
+
+using separate `WriteLine()` statements.
+
+---
+
+# 22. Lesson Completion Checklist
+
+* [ ] Understand C#
+* [ ] Understand .NET
+* [ ] Understand `Program.cs`
+* [ ] Understand program entry point
+* [ ] Understand traditional `Main()`
+* [ ] Understand top-level statements
+* [ ] Understand `Console.WriteLine()`
+* [ ] Understand `Console.Write()`
+* [ ] Understand statements
+* [ ] Understand `;`
+* [ ] Understand `{ }`
+* [ ] Understand comments
+* [ ] Complete practice questions
+* [ ] Run the program successfully
+
+---
+
+# Next Lesson
+
+## Lesson 2 — Variables & Data Types
+
+We will cover:
+
+```text
+Variables
+   ↓
+Declaration
+   ↓
+Initialization
+   ↓
+Data Types
+   ↓
+Value Types
+   ↓
+Reference Types
+   ↓
+int
+double
+decimal
+char
+string
+bool
+   ↓
+var
+   ↓
+const
+   ↓
+Practice
+```
+
+**Current Status:** Lesson 1 — C# Program Structure & Fundamentals → Complete this theory + practice before moving to Lesson 2.
