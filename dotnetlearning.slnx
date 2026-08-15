@@ -4,6 +4,7 @@
   </Folder>
   <Folder Name="/Progress/">
     <File Path="index.md" />
+    <File Path="Lesson1C#ProgramStructure.md" />
   </Folder>
   <Project Path="csharp.fundamental/csharp.fundamental.csproj" />
 </Solution>
