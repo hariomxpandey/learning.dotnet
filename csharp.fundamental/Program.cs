@@ -1,4 +1,4 @@
-﻿// Csharp fundamental project targeting .NET 10.0
+// Csharp fundamental project targeting .NET 10.0
 
 using System.Runtime.CompilerServices;
 
@@ -34,3 +34,6 @@ Console.WriteLine("ASP.NET Core");
 Console.WriteLine("SQL Server");
 Console.WriteLine("React");
 Console.WriteLine("```");
+
+Console.WriteLine("\n--- Lesson 1.2 Practice ---");
+L1_2_Practice.Run();
