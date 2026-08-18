@@ -40,3 +40,5 @@ Console.WriteLine("\n--- Lesson 1.2 Practice ---");
 L1_2_Practice.Run();
 Console.WriteLine("\n--- Lesson 1.3 Practice ---");
 L1_3_Practice.Run();
+Console.WriteLine("\n--- Lesson 1.4 Practice ---");
+L1_4_Practice.Run();
