@@ -1,5 +1,6 @@
 // Csharp fundamental project targeting .NET 10.0
 
+using csharp.fundamental.Module_1_CSharpFundamental;
 using System.Runtime.CompilerServices;
 
 Console.WriteLine(" Practice 1");
@@ -37,3 +38,5 @@ Console.WriteLine("```");
 
 Console.WriteLine("\n--- Lesson 1.2 Practice ---");
 L1_2_Practice.Run();
+Console.WriteLine("\n--- Lesson 1.3 Practice ---");
+L1_3_Practice.Run();

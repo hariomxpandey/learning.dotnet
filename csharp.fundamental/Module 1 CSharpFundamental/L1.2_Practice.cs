@@ -22,24 +22,24 @@ internal class L1_2_Practice
         Console.WriteLine($"Grade: {Grade}");
 
         Console.WriteLine("Practice 2");
-        string ProductName = "Laptop";
-        Console.WriteLine("Enter Product Name: ");
-        ProductName = Console.ReadLine();
-        Console.WriteLine($"Product Name: {ProductName}");
-        int productPrice = 0;
-        Console.WriteLine("Enter Product Price: ");
-        productPrice = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine($"Product Price: {productPrice}");
-        int productQuantity = 0;        
-        Console.WriteLine("Enter Quantity: ");
-        productQuantity = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine($"Product Quantity: {productQuantity}");
-        bool isAvailable = false;
-        Console.WriteLine("Is Product Available (true/false): ");
-        isAvailable = Convert.ToBoolean(Console.ReadLine());
-        Console.WriteLine($"Is Product Available: {isAvailable}");
-        char productGrade = 'A';
-        Console.WriteLine($"Product Grade: {productGrade}");
+        //string ProductName = "Laptop";
+        //Console.WriteLine("Enter Product Name: ");
+        //ProductName = Console.ReadLine();
+        //Console.WriteLine($"Product Name: {ProductName}");
+        //int productPrice = 0;
+        //Console.WriteLine("Enter Product Price: ");
+        //productPrice = Convert.ToInt32(Console.ReadLine());
+        //Console.WriteLine($"Product Price: {productPrice}");
+        //int productQuantity = 0;        
+        //Console.WriteLine("Enter Quantity: ");
+        //productQuantity = Convert.ToInt32(Console.ReadLine());
+        //Console.WriteLine($"Product Quantity: {productQuantity}");
+        //bool isAvailable = false;
+        //Console.WriteLine("Is Product Available (true/false): ");
+        //isAvailable = Convert.ToBoolean(Console.ReadLine());
+        //Console.WriteLine($"Is Product Available: {isAvailable}");
+        //char productGrade = 'A';
+        //Console.WriteLine($"Product Grade: {productGrade}");
 
 
         Console.WriteLine("Practice 3");
