@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 internal class L1_1_Practice
 {
-    private static void Main(string[] args)
+    public static void Run()
     {
         Console.WriteLine(" Practice 1");
         Console.WriteLine("==============================");
