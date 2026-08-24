@@ -4,7 +4,7 @@ using System.Text;
 
 namespace csharp.fundamental.Module_1_CSharpFundamental
 {
-    internal class L1_5_Practice
+    internal class L2_1_Practice
     {
         public static void Run()
         {

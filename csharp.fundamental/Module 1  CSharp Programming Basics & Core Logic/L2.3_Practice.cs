@@ -4,7 +4,7 @@ using System.Text;
 
 namespace csharp.fundamental.Module_1_CSharpFundamental
 {
-    internal class L1_7_Practice
+    internal class L2_3_Practice
     {
         public static void Run()
         {
@@ -301,19 +301,21 @@ namespace csharp.fundamental.Module_1_CSharpFundamental
             //Console.WriteLine($"Sum of numbers from 1 to 100 is: {sum}");
 
             // Practice 5 - User Input Validation using while loop
-            int userInput;
-            while (true) {
-                Console.Write("Enter a number (0 to exit): ");
-                bool isValidInput = int.TryParse(Console.ReadLine(), out userInput);
-                if (isValidInput) {
-                    if (userInput == 0) {
-                        break;
-                    }
-                    Console.WriteLine($"You entered: {userInput}");
-                } else {
-                    Console.WriteLine("Error: Please enter a valid integer.");
-                }
-            }
+            //int userInput;
+            //while (true) {
+            //    Console.Write("Enter a number (0 to exit): ");
+            //    bool isValidInput = int.TryParse(Console.ReadLine(), out userInput);
+            //    if (isValidInput) {
+            //        if (userInput == 0) {
+            //            break;
+            //        }
+            //        Console.WriteLine($"You entered: {userInput}");
+            //    } else {
+            //        Console.WriteLine("Error: Please enter a valid integer.");
+            //    }
+            //}
+
+            // 
         }
     }
 }
