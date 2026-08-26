@@ -8,3 +8,5 @@
   **Topic:** 2.1 C# Control Flow
   **Topic:** 2.2 C# Switch Case
   **Topic:** 2.3 C# Loops
+  **Part:** 5
+  **Topic:** 5.1 C# 1-Dimensional Arrays

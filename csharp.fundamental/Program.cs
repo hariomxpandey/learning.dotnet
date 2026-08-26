@@ -1,5 +1,6 @@
 // Csharp fundamental project targeting .NET 10.0
 
+using csharp.fundamental.Module_1__CSharp_Programming_Basics___Core_Logic;
 using csharp.fundamental.Module_1_CSharpFundamental;
 using System.Runtime.CompilerServices;
 
@@ -18,3 +19,7 @@ using System.Runtime.CompilerServices;
 //L2_2_Practice.Run();
 //Console.WriteLine("\n--- Lesson 2.3 Practice ---");
 //L2_3_Practice.Run();
+//Console.WriteLine("\n--- Lesson 5.1 Practice ---");
+//L5_1_Practice.Run();
+Console.WriteLine("\n--- Lesson 5.2 Practice ---");
+L5_2_Practice.Run();
