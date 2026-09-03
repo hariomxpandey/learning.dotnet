@@ -21,14 +21,16 @@ using System.Runtime.CompilerServices;
 //L2_3_Practice.Run();
 //Console.WriteLine("\n--- Lesson 3.1 Practice ---");
 //L3_1_Practice.Run();
-Console.WriteLine("\n--- Lesson 3.2 Practice ---");
-L3_2_Practice.Run();
+//Console.WriteLine("\n--- Lesson 3.2 Practice ---");
+//L3_2_Practice.Run();
 
-Console.WriteLine("\n--- Lesson 3.3 Practice ---");
-L3_3_Practice.Run();
+//Console.WriteLine("\n--- Lesson 3.3 Practice ---");
+//L3_3_Practice.Run();
 
-Console.WriteLine("\n--- Lesson 3.4 Practice ---");
-L3_4_Practice.Run();
+//Console.WriteLine("\n--- Lesson 3.4 Practice ---");
+//L3_4_Practice.Run();
+Console.WriteLine("\n--- Lesson 4.1 Practice ---");
+L4_1_Practice.Run();
 //Console.WriteLine("\n--- Lesson 5.1 Practice ---");
 //L5_1_Practice.Run();
 //Console.WriteLine("\n--- Lesson 5.2 Practice ---");

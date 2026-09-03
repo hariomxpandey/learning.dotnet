@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Module 1  CSharp Programming Basics &amp; Core Logic\L4.2_Practice.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Module 1  CSharp Programming Basics &amp; Core Logic\L4.2_Practice.cs" />
+  </ItemGroup>
+
 </Project>
