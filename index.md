@@ -18,8 +18,10 @@
   **Topic:** 4.2 C# Fields , Properties, and Auto-properties
   **Topic:** 4.3 C# Encapsulation & Access Modifiers
   **Topic:** 4.4 C# Constructors
+  **Topic:** 4.5 C# Destructors / Finalizers 
+  **Topic:** 4.6 C# Constructors And Methods Overloading
    **Part:** 5
   **Topic:** 5.1 C# 1-Dimensional Arrays
   **Topic:** 5.2 C# Array Operations
-  **Topic:** 5.3 C# String Manupilation
+  **Topic:** 5.3 C# String Manipulation
    **Part:** 6

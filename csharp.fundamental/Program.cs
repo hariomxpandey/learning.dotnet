@@ -31,6 +31,17 @@ using System.Runtime.CompilerServices;
 //L3_4_Practice.Run();
 Console.WriteLine("\n--- Lesson 4.1 Practice ---");
 L4_1_Practice.Run();
+//Console.WriteLine("\n--- Lesson 4.2 Practice ---");
+//L4_2_Practice.Run();
+//Console.WriteLine("\n--- Lesson 4.3 Practice ---");
+//L4_3_Practice.Run();
+Console.WriteLine("\n--- Lesson 4.1 Practice ---");
+L4_1_Practice.Run();
+Console.WriteLine("\n--- Lesson 4.1 Practice ---");
+L4_1_Practice.Run();
+Console.WriteLine("\n--- Lessob 4.5 Practice ---");
+Test.Run();
+
 //Console.WriteLine("\n--- Lesson 5.1 Practice ---");
 //L5_1_Practice.Run();
 //Console.WriteLine("\n--- Lesson 5.2 Practice ---");
