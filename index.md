@@ -24,4 +24,17 @@
   **Topic:** 5.1 C# 1-Dimensional Arrays
   **Topic:** 5.2 C# Array Operations
   **Topic:** 5.3 C# String Manipulation
-   **Part:** 6
+ 
+
+ **Module:** 2 — C# Intermediate Programming & OOP Concepts
+   **Part:** 1
+  **Topic:** 1.1 C# Inheritance
+  **Topic:** 1.2 C# Abstraction and Interfaces
+  **Topic:** 1.3 C# Polymorphism
+   **Part:** 2 - Advanced Language Features
+  **Topic:** 2.1 C# Delegates
+  **Topic:** 2.2 C# Events
+  **Topic:** 2.3 C# Lambda Expressions
+  **Topic:** 2.4 C# Func, Action and Predicate
+  **Topic:** 2.5 C# Generics
+  
