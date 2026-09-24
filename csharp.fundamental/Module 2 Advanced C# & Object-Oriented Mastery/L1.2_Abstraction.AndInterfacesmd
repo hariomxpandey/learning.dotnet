@@ -1,0 +1,1381 @@
+﻿Abstraction & Interfaces
+
+This is the second major topic of 2.1 Deep OOP Concepts.
+
+We will build the concept in this order:
+
+Abstraction
+   ↓
+Why abstraction is needed
+   ↓
+Abstract classes
+   ↓
+Abstract methods
+   ↓
+Concrete implementation
+   ↓
+Interfaces
+   ↓
+Abstract class vs interface
+   ↓
+Implicit interface implementation
+   ↓
+Explicit interface implementation
+   ↓
+Multiple interfaces
+   ↓
+Real-world design
+1. What Is Abstraction?
+
+Abstraction means exposing what an object can do while hiding unnecessary implementation details.
+
+Consider a car.
+
+You know:
+
+Start()
+Accelerate()
+Brake()
+Turn()
+
+But you don't need to know every internal engine operation to drive it.
+
+Conceptually:
+
+        User
+          ↓
+    Car controls
+          ↓
+ ┌──────────────────┐
+ │ Start()          │
+ │ Accelerate()     │
+ │ Brake()          │
+ └──────────────────┘
+          ↓
+   Hidden internals
+
+The user interacts with a simple interface while the implementation remains hidden.
+
+2. Abstraction vs Encapsulation
+
+These concepts are related but different.
+
+Encapsulation
+
+Encapsulation focuses on:
+
+Protecting and controlling access to data and implementation.
+
+Example:
+
+class BankAccount
+{
+    private decimal balance;
+
+    public void Deposit(decimal amount)
+    {
+        if (amount > 0)
+        {
+            balance += amount;
+        }
+    }
+}
+
+balance is hidden.
+
+Abstraction
+
+Abstraction focuses on:
+
+Defining what something should do while hiding unnecessary implementation details.
+
+For example:
+
+abstract class Payment
+{
+    public abstract void Pay(decimal amount);
+}
+
+We are saying:
+
+Every payment type must provide a Pay() operation.
+
+But we don't define the complete payment mechanism here.
+
+Simple Difference
+Encapsulation
+    ↓
+How do I protect/control the internals?
+
+Abstraction
+    ↓
+What should this object expose?
+3. Why Do We Need Abstraction?
+
+Suppose we have:
+
+Credit Card Payment
+UPI Payment
+PayPal Payment
+Bank Transfer
+
+Every payment method needs something like:
+
+Pay(amount)
+
+But the implementation is different.
+
+Credit Card
+    ↓
+Card processing
+
+UPI
+    ↓
+UPI processing
+
+Bank Transfer
+    ↓
+Bank processing
+
+We want a common concept:
+
+             Payment
+                ↓
+        Pay(amount)
+                ↑
+        ┌───────┼────────┐
+        │       │        │
+      Card     UPI     Bank
+
+This is where abstraction becomes useful.
+
+4. Abstract Classes
+
+C# provides the abstract keyword.
+
+Example:
+
+abstract class Payment
+{
+    public abstract void Pay(decimal amount);
+}
+
+This is an abstract class.
+
+It represents a general concept rather than a directly usable concrete object.
+
+5. Abstract Class Cannot Be Instantiated
+
+This is important.
+
+You cannot do:
+
+Payment payment = new Payment();
+
+This is invalid because Payment is abstract.
+
+Instead, create a concrete derived class:
+
+class CreditCardPayment : Payment
+{
+    public override void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid {amount} using credit card.");
+    }
+}
+
+Now:
+
+Payment payment = new CreditCardPayment();
+
+payment.Pay(500);
+
+This is valid.
+
+Mental model:
+
+abstract class
+      ↓
+defines a general concept
+      ↓
+derived class
+      ↓
+provides concrete implementation
+6. Abstract Method
+
+An abstract method has no implementation in the abstract base class.
+
+Example:
+
+abstract class Payment
+{
+    public abstract void Pay(decimal amount);
+}
+
+Notice:
+
+public abstract void Pay(decimal amount);
+
+There is no:
+
+{ }
+
+body.
+
+The method declaration says:
+
+A derived concrete class must provide the implementation.
+
+7. Implementing an Abstract Method
+
+Derived class:
+
+class CreditCardPayment : Payment
+{
+    public override void Pay(decimal amount)
+    {
+        Console.WriteLine(
+            $"Paid {amount} using credit card."
+        );
+    }
+}
+
+The important keyword is:
+
+override
+
+The abstract method requires the derived class to provide an implementation.
+
+So:
+
+Payment
+   ↓
+abstract Pay()
+   ↓
+CreditCardPayment
+   ↓
+override Pay()
+8. Another Example
+abstract class Animal
+{
+    public abstract void MakeSound();
+}
+
+Now:
+
+class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Bark");
+    }
+}
+
+And:
+
+class Cat : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Meow");
+    }
+}
+
+Usage:
+
+Animal dog = new Dog();
+Animal cat = new Cat();
+
+dog.MakeSound();
+cat.MakeSound();
+
+Output:
+
+Bark
+Meow
+
+Notice something important:
+
+Animal
+   ↓
+defines WHAT
+   ↓
+MakeSound()
+
+Dog
+   ↓
+defines HOW
+   ↓
+Bark
+
+Cat
+   ↓
+defines HOW
+   ↓
+Meow
+
+That is abstraction.
+
+9. Abstract Class Can Have Normal Methods
+
+An abstract class is not limited to abstract methods.
+
+It can contain:
+
+fields
+properties
+constructors
+normal methods
+abstract methods
+static members
+protected members
+
+Example:
+
+abstract class Animal
+{
+    protected string name;
+
+    public Animal(string name)
+    {
+        this.name = name;
+    }
+
+    public void Sleep()
+    {
+        Console.WriteLine($"{name} is sleeping.");
+    }
+
+    public abstract void MakeSound();
+}
+
+Derived class:
+
+class Dog : Animal
+{
+    public Dog(string name)
+        : base(name)
+    {
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Bark");
+    }
+}
+
+Usage:
+
+Dog dog = new Dog("Tommy");
+
+dog.Sleep();
+dog.MakeSound();
+
+Output:
+
+Tommy is sleeping.
+Bark
+10. Why Mix Abstract and Concrete Members?
+
+Because the base class can provide common functionality while requiring derived classes to provide specific functionality.
+
+Example:
+
+Animal
+│
+├── Sleep()        ← common implementation
+│
+└── MakeSound()    ← different for every animal
+
+So:
+
+Common behavior
+    ↓
+Normal method
+
+Variable behavior
+    ↓
+Abstract method
+
+This is one of the strongest use cases for abstract classes.
+
+11. Abstract Class With Constructor
+
+An abstract class can have a constructor.
+
+Example:
+
+abstract class Animal
+{
+    protected string name;
+
+    protected Animal(string name)
+    {
+        this.name = name;
+    }
+
+    public abstract void MakeSound();
+}
+
+Then:
+
+class Dog : Animal
+{
+    public Dog(string name)
+        : base(name)
+    {
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Bark");
+    }
+}
+
+Even though you cannot create:
+
+new Animal(...)
+
+the Animal constructor still runs when creating a derived object.
+
+new Dog("Tommy")
+      ↓
+Animal constructor
+      ↓
+Dog constructor
+      ↓
+Dog object
+
+This connects directly to the inheritance and constructor chaining lesson.
+
+12. Abstract Class Does Not Mean "Everything Is Abstract"
+
+This is a common misconception.
+
+This is completely valid:
+
+abstract class Vehicle
+{
+    public void Start()
+    {
+        Console.WriteLine("Starting");
+    }
+
+    public abstract void Move();
+}
+
+Here:
+
+Vehicle
+├── Start()
+│   └── concrete implementation
+│
+└── Move()
+    └── abstract requirement
+
+So an abstract class can contain both:
+
+implemented behavior
++
+required behavior
+13. What If a Derived Class Doesn't Implement the Abstract Method?
+
+Suppose:
+
+abstract class Animal
+{
+    public abstract void MakeSound();
+}
+
+Then:
+
+class Dog : Animal
+{
+}
+
+This is invalid if Dog is concrete.
+
+Why?
+
+Because Dog still has an unimplemented abstract member.
+
+It must provide:
+
+public override void MakeSound()
+{
+    Console.WriteLine("Bark");
+}
+
+Alternatively, Dog itself could also be abstract:
+
+abstract class Dog : Animal
+{
+}
+
+Then another concrete class can implement the method later.
+
+14. Abstract Class Hierarchy
+
+You can have:
+
+Animal
+  ↓
+Mammal
+  ↓
+Dog
+
+where intermediate classes can also remain abstract.
+
+Example:
+
+abstract class Animal
+{
+    public abstract void MakeSound();
+}
+
+abstract class Mammal : Animal
+{
+    public void Breathe()
+    {
+        Console.WriteLine("Breathing");
+    }
+}
+
+class Dog : Mammal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Bark");
+    }
+}
+
+Mammal doesn't have to implement MakeSound() because it is also abstract.
+
+15. Now: What Is an Interface?
+
+An interface defines a contract that a type can implement.
+
+Example:
+
+interface IPayment
+{
+    void Pay(decimal amount);
+}
+
+This says:
+
+Any class implementing IPayment must provide Pay(decimal).
+
+Example:
+
+class CreditCardPayment : IPayment
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine(
+            $"Paid {amount} using credit card."
+        );
+    }
+}
+
+Usage:
+
+IPayment payment = new CreditCardPayment();
+
+payment.Pay(500);
+16. Interface Mental Model
+
+Think of an interface as a contract.
+
+IPayment
+   │
+   └── Pay(amount)
+
+Any implementing class agrees:
+
+"I provide this operation."
+
+Different classes can implement it differently:
+
+             IPayment
+            /        \
+           /          \
+    CreditCard        UPI
+       │                │
+   Pay()              Pay()
+
+The contract is common.
+
+The implementation is different.
+
+17. Interface Syntax
+
+Modern C#:
+
+interface IPayment
+{
+    void Pay(decimal amount);
+}
+
+Implementation:
+
+class CreditCardPayment : IPayment
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine("Credit card payment");
+    }
+}
+
+The syntax looks similar to inheritance:
+
+class Dog : Animal
+
+and:
+
+class Dog : IAnimal
+
+But conceptually they are different.
+
+Base class
+    ↓
+inheritance
+
+Interface
+    ↓
+contract implementation
+18. Why Does an Interface Name Usually Start With I?
+
+C# convention uses:
+
+I + descriptive name
+
+Examples:
+
+IEnumerable
+IDisposable
+IComparable
+IPayment
+ILogger
+IRepository
+
+So:
+
+interface IPayment
+
+is conventional.
+
+This is a naming convention, not a language requirement.
+
+19. Abstract Class vs Interface
+
+This is one of the most important comparisons in C#.
+
+Abstract Class	Interface
+Represents a base type/concept	Represents a contract/capability
+Uses abstract class	Uses interface
+Can have fields	Cannot have instance fields in the same way a class does
+Can have constructors	Cannot have constructors
+Can have implemented methods	Can define contract members and, in modern C#, default implementations
+Can have abstract methods	Can declare interface members
+A class can inherit only one class	A class can implement multiple interfaces
+Can have access modifiers on members	Interface members have interface-specific accessibility rules
+Supports class inheritance	Supports contract implementation
+
+The biggest practical difference:
+
+Class inheritance
+    ↓
+One base class
+
+Interface implementation
+    ↓
+Multiple interfaces
+
+Example:
+
+class SmartPhone : Device, ICamera, IPhone, IGps
+{
+}
+
+A class can inherit from one base class while implementing several interfaces.
+
+20. Abstract Class Is About "What You Are"
+
+An abstract class often represents a fundamental type relationship.
+
+Example:
+
+Dog IS-A Animal
+Car IS-A Vehicle
+Manager IS-A Employee
+
+So:
+
+abstract class Animal
+{
+}
+21. Interface Is Often About "What You Can Do"
+
+An interface can represent a capability.
+
+For example:
+
+interface IFlyable
+{
+    void Fly();
+}
+
+Then:
+
+class Bird : IFlyable
+{
+    public void Fly()
+    {
+        Console.WriteLine("Bird flying");
+    }
+}
+
+Another completely different class can implement it:
+
+class Airplane : IFlyable
+{
+    public void Fly()
+    {
+        Console.WriteLine("Airplane flying");
+    }
+}
+
+They don't need to share a base class.
+
+IFlyable
+   ↑
+   ├── Bird
+   │
+   └── Airplane
+
+The common concept is:
+
+They can fly.
+
+22. One Class Can Implement Multiple Interfaces
+
+This is a major advantage.
+
+interface IFlyable
+{
+    void Fly();
+}
+
+interface ISwimmable
+{
+    void Swim();
+}
+
+A class can implement both:
+
+class Duck : IFlyable, ISwimmable
+{
+    public void Fly()
+    {
+        Console.WriteLine("Duck flying");
+    }
+
+    public void Swim()
+    {
+        Console.WriteLine("Duck swimming");
+    }
+}
+
+Now:
+
+Duck
+├── IFlyable
+│   └── Fly()
+│
+└── ISwimmable
+    └── Swim()
+23. Multiple Interfaces vs Multiple Inheritance
+
+C# does not allow:
+
+class C : A, B
+
+where A and B are classes.
+
+But it allows:
+
+class C : A, IB, IC
+
+where:
+
+A  → class
+IB → interface
+IC → interface
+
+This provides multiple contracts without multiple base classes.
+
+24. Implicit Interface Implementation
+
+This is the normal way to implement an interface.
+
+Interface:
+
+interface IPayment
+{
+    void Pay(decimal amount);
+}
+
+Class:
+
+class CreditCardPayment : IPayment
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine("Credit card payment");
+    }
+}
+
+The method:
+
+public void Pay(decimal amount)
+
+implicitly implements:
+
+IPayment.Pay()
+
+That's called implicit interface implementation.
+
+25. Why Is It Called "Implicit"?
+
+Because you don't explicitly mention the interface when defining the method.
+
+You write:
+
+public void Pay(decimal amount)
+
+not:
+
+public void IPayment.Pay(decimal amount)
+
+The compiler recognizes that the class method satisfies the interface contract.
+
+26. Explicit Interface Implementation
+
+Now suppose one class implements two interfaces that contain the same method name.
+
+interface IPrinter
+{
+    void Start();
+}
+
+interface IScanner
+{
+    void Start();
+}
+
+A class could implement both explicitly:
+
+class MultiFunctionMachine : IPrinter, IScanner
+{
+    void IPrinter.Start()
+    {
+        Console.WriteLine("Printer starting");
+    }
+
+    void IScanner.Start()
+    {
+        Console.WriteLine("Scanner starting");
+    }
+}
+
+Now there are two different implementations of:
+
+Start()
+27. Why Explicit Implementation Is Useful
+
+Suppose:
+
+IPrinter.Start()
+      ↓
+Printer-specific behavior
+
+IScanner.Start()
+      ↓
+Scanner-specific behavior
+
+The class can provide both without ambiguity.
+
+Usage:
+
+IPrinter printer = new MultiFunctionMachine();
+IScanner scanner = new MultiFunctionMachine();
+
+printer.Start();
+scanner.Start();
+
+Output:
+
+Printer starting
+Scanner starting
+28. Important: Explicit Members Are Not Directly Accessible Through the Class
+
+Consider:
+
+class MultiFunctionMachine : IPrinter, IScanner
+{
+    void IPrinter.Start()
+    {
+        Console.WriteLine("Printer");
+    }
+
+    void IScanner.Start()
+    {
+        Console.WriteLine("Scanner");
+    }
+}
+
+This will not work:
+
+MultiFunctionMachine machine = new MultiFunctionMachine();
+
+// machine.Start(); // Error
+
+Why?
+
+Because the implementations are explicitly associated with their interfaces.
+
+You need:
+
+IPrinter printer = machine;
+printer.Start();
+
+or:
+
+IScanner scanner = machine;
+scanner.Start();
+
+This is one of the defining characteristics of explicit implementation.
+
+29. Implicit vs Explicit
+Implicit	Explicit
+Method is normally public	Method explicitly names the interface
+Accessible through the class	Accessed through interface reference
+Easy/default approach	Useful when resolving conflicts
+One implementation can satisfy interface	Different implementation per interface possible
+
+Example:
+
+Implicit
+public void Pay(decimal amount)
+{
+}
+Explicit
+void IPayment.Pay(decimal amount)
+{
+}
+30. A Real Example of Explicit Implementation
+
+Suppose:
+
+interface IReadable
+{
+    void Read();
+}
+
+interface IWritable
+{
+    void Write();
+}
+
+Class:
+
+class Document : IReadable, IWritable
+{
+    public void Read()
+    {
+        Console.WriteLine("Reading document");
+    }
+
+    public void Write()
+    {
+        Console.WriteLine("Writing document");
+    }
+}
+
+No conflict exists, so implicit implementation is simple.
+
+But if both interfaces contain:
+
+void Process();
+
+then explicit implementation allows separate behavior.
+
+31. Interface Reference
+
+Just like base-class references:
+
+IPayment payment = new CreditCardPayment();
+
+The object is:
+
+CreditCardPayment
+
+but the reference is:
+
+IPayment
+
+This is extremely powerful because code can depend on the contract rather than a specific implementation.
+
+Example:
+
+void ProcessPayment(IPayment payment)
+{
+    payment.Pay(500);
+}
+
+Now we can pass:
+
+ProcessPayment(new CreditCardPayment());
+ProcessPayment(new UpiPayment());
+
+The method doesn't care which concrete payment class it receives.
+
+32. Why Interfaces Are Powerful
+
+Without an interface:
+
+void ProcessPayment(CreditCardPayment payment)
+{
+}
+
+The method is tightly coupled to:
+
+CreditCardPayment
+
+With:
+
+void ProcessPayment(IPayment payment)
+{
+}
+
+the method depends on:
+
+IPayment contract
+
+Now:
+
+CreditCardPayment
+UpiPayment
+BankTransferPayment
+
+can all be used.
+
+This idea becomes extremely important later when we study:
+
+Dependency Inversion Principle (DIP)
+
+and software architecture.
+
+33. Abstract Class + Interface Together
+
+A class can inherit from an abstract class and implement interfaces.
+
+abstract class Animal
+{
+    public abstract void MakeSound();
+}
+
+interface IFlyable
+{
+    void Fly();
+}
+
+class Bird : Animal, IFlyable
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Chirp");
+    }
+
+    public void Fly()
+    {
+        Console.WriteLine("Flying");
+    }
+}
+
+This means:
+
+Bird
+├── inherits Animal
+│   └── MakeSound()
+│
+└── implements IFlyable
+    └── Fly()
+
+This is a very common pattern in real C# applications.
+
+34. A Useful Decision Rule
+
+When deciding between abstract class and interface, ask:
+
+Question 1
+
+Is this a strong base-type relationship?
+
+Example:
+
+Dog IS-A Animal
+
+An abstract class may make sense.
+
+Question 2
+
+Is this a capability or contract that unrelated types can share?
+
+Example:
+
+Bird can fly
+Airplane can fly
+Drone can fly
+
+An interface may make more sense:
+
+IFlyable
+35. Important Modern C# Detail
+
+Interfaces in modern C# are more powerful than the traditional idea:
+
+"An interface can contain only abstract methods."
+
+Modern C# supports features such as default interface implementations and static members in interfaces.
+
+For example, interfaces can provide a default implementation in supported C# versions.
+
+However, the core concept you should remember first is still:
+
+Interface
+    ↓
+Contract
+    ↓
+Implementing type provides behavior
+
+We will not mix advanced interface features into the fundamentals unnecessarily.
+
+36. Full Example — Abstract Class + Interface
+abstract class Vehicle
+{
+    protected string brand;
+
+    protected Vehicle(string brand)
+    {
+        this.brand = brand;
+    }
+
+    public void Start()
+    {
+        Console.WriteLine($"{brand} is starting.");
+    }
+
+    public abstract void Move();
+}
+
+Interface:
+
+interface IElectric
+{
+    void Charge();
+}
+
+Concrete class:
+
+class ElectricCar : Vehicle, IElectric
+{
+    public ElectricCar(string brand)
+        : base(brand)
+    {
+    }
+
+    public override void Move()
+    {
+        Console.WriteLine($"{brand} is moving silently.");
+    }
+
+    public void Charge()
+    {
+        Console.WriteLine($"{brand} is charging.");
+    }
+}
+
+Usage:
+
+ElectricCar car = new ElectricCar("Tesla");
+
+car.Start();
+car.Move();
+car.Charge();
+
+Output:
+
+Tesla is starting.
+Tesla is moving silently.
+Tesla is charging.
+
+The design:
+
+                 Vehicle
+                    ↑
+                    │
+              ElectricCar
+                    │
+                    └──── IElectric
+37. The Deep Mental Model
+
+Think about the three concepts like this:
+
+Inheritance
+    ↓
+"What kind of thing is this?"
+    ↓
+IS-A relationship
+Abstract Class
+    ↓
+"What common base behavior/state should related types share?"
+Interface
+    ↓
+"What capability/contract must this type provide?"
+
+Example:
+
+ElectricCar
+│
+├── IS-A Vehicle
+│      ↓
+│   abstract class
+│
+└── CAN Charge
+       ↓
+    interface
+38. Common Mistakes
+Mistake 1 — Trying to instantiate an abstract class
+abstract class Animal
+{
+}
+
+This is invalid:
+
+Animal animal = new Animal();
+Mistake 2 — Forgetting override
+
+If the base member is abstract:
+
+public abstract void MakeSound();
+
+the concrete derived class needs:
+
+public override void MakeSound()
+{
+}
+Mistake 3 — Confusing interface with object creation
+
+You cannot normally instantiate an interface:
+
+IPayment payment = new IPayment(); // Error
+
+Instead:
+
+IPayment payment = new CreditCardPayment();
+Mistake 4 — Forgetting public for implicit implementation
+
+For a normal interface implementation:
+
+class Payment : IPayment
+{
+    public void Pay(decimal amount)
+    {
+    }
+}
+
+The method must satisfy the interface's required accessibility.
+
+Mistake 5 — Assuming interfaces are only for inheritance
+
+Interfaces are better understood as contracts/capabilities, not simply "another kind of parent class."
+
+39. Final Comparison
+                Abstract Class             Interface
+                -------------              ---------
+Purpose         Base abstraction           Contract/capability
+
+Relationship    IS-A                       CAN-DO / contract
+
+Fields          Yes                        No instance fields
+
+Constructor     Yes                        No
+
+Concrete code   Yes                        Yes, including
+                                          modern default
+                                          implementations
+
+Abstract        Yes                        Interface members
+members                                    can define contracts
+
+Multiple        No                         Yes
+inheritance/
+implementation
+
+Object          No                          No
+creation
+
+The most important part is not memorizing the table.
+
+Remember:
+
+Abstract Class
+      ↓
+Shared identity + shared implementation
+      ↓
+"These types belong to the same family."
+
+Interface
+      ↓
+Contract/capability
+      ↓
+"These types agree to provide this behavior."
+40. What You Should Be Able to Explain Now
+
+Before moving forward, you should be comfortable explaining:
+
+1. What is abstraction?
+
+2. What is an abstract class?
+
+3. Why can't an abstract class normally be instantiated?
+
+4. What is an abstract method?
+
+5. Why does a concrete derived class need to implement it?
+
+6. Can an abstract class contain normal methods?
+   Yes.
+
+7. What is an interface?
+
+8. Why do we use interfaces?
+
+9. Abstract class vs interface?
+
+10. What is implicit interface implementation?
+
+11. What is explicit interface implementation?
+
+12. Why would explicit implementation be useful?
+
+13. Can a class implement multiple interfaces?
+    Yes.
+
+14. Can a class inherit multiple classes?
+    No.
+
+15. Can an abstract class and interface be used together?
+    Yes.

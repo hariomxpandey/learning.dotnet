@@ -5,6 +5,7 @@
   <Folder Name="/Progress/">
     <File Path="index.md" />
     <File Path="Module 1.md" />
+    <File Path="Module 2.md" />
   </Folder>
   <Project Path="csharp.fundamental/csharp.fundamental.csproj" />
 </Solution>

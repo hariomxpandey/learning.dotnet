@@ -1,6 +1,7 @@
 // Csharp fundamental project targeting .NET 10.0
 
 using csharp.fundamental.Module_1__CSharp_Programming_Basics___Core_Logic;
+using csharp.fundamental.Module_2_Advanced_C____Object_Oriented_Mastery;
 using csharp.fundamental.Module_1_CSharpFundamental;
 using System.Runtime.CompilerServices;
 
@@ -29,18 +30,18 @@ using System.Runtime.CompilerServices;
 
 //Console.WriteLine("\n--- Lesson 3.4 Practice ---");
 //L3_4_Practice.Run();
-Console.WriteLine("\n--- Lesson 4.1 Practice ---");
-L4_1_Practice.Run();
+//Console.WriteLine("\n--- Lesson 4.1 Practice ---");
+//L4_1_Practice.Run();
 //Console.WriteLine("\n--- Lesson 4.2 Practice ---");
 //L4_2_Practice.Run();
 //Console.WriteLine("\n--- Lesson 4.3 Practice ---");
 //L4_3_Practice.Run();
-Console.WriteLine("\n--- Lesson 4.1 Practice ---");
-L4_1_Practice.Run();
-Console.WriteLine("\n--- Lesson 4.1 Practice ---");
-L4_1_Practice.Run();
-Console.WriteLine("\n--- Lessob 4.5 Practice ---");
-Test.Run();
+//Console.WriteLine("\n--- Lesson 4.1 Practice ---");
+//L4_1_Practice.Run();
+//Console.WriteLine("\n--- Lesson 4.1 Practice ---");
+//L4_1_Practice.Run();
+//Console.WriteLine("\n--- Lessob 4.5 Practice ---");
+//Test.Run();
 
 //Console.WriteLine("\n--- Lesson 5.1 Practice ---");
 //L5_1_Practice.Run();
@@ -48,3 +49,17 @@ Test.Run();
 //L5_2_Practice.Run();
 //Console.WriteLine("\n--- Lesson 5.3 Practice ---");
 //L5_3_Practice.Run();
+
+
+// Module 2 
+//Console.WriteLine("\n--- Lesson 1.1 Inheritance ---");
+//L2_1_Inheritance.Run();
+
+//Console.WriteLine("\n--- Lesson 1.2 Abstraction and Interfaces ---");
+// L2_2_AbstarctionAndInterfaces.Run();
+
+Console.WriteLine("\n----- Lesson 1.3 Polymorphism ---");
+L2_3_Polymorphism.Run();
+
+
+
