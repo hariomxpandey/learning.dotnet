@@ -77,5 +77,7 @@ L2_4_FuncActionPredicate.Run();
 Console.WriteLine("\n----- Lesson 2.5 Generics ---");
 L2_5_Generics.Run();
 
+Console.WriteLine("\n----- Lesson 2.6 Extensions ---");
+L2_6_Extensions.Run();
 
 
